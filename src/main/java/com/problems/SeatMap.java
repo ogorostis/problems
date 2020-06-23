@@ -33,7 +33,7 @@ public class SeatMap {
     RowSeating getRowSeating(final int[] seats, final int partySize) throws Exception {
         int position = 0;
         int partyCount = 0;
-        List<Integer> aisles = new LinkedList<>();
+        final List<Integer> aisles = new LinkedList<>();
         final List<RowSeating> candidates = new LinkedList<>();
 
         while (position < seats.length) {
@@ -44,7 +44,7 @@ public class SeatMap {
                     aisles.add(position);
                 } else if (seats[position] == TAKEN) {
                     partyCount = 0;
-                    aisles = new LinkedList<>();
+                    aisles.clear();
                 }
                 position++;
             }
@@ -64,7 +64,7 @@ public class SeatMap {
                     // so we continue (after backtracking to right after LAST aisle)
                     position = 1 + aisles.get(aisles.size() - 1);
                     partyCount = 0;
-                    aisles = new LinkedList<>();
+                    aisles.clear();
                 }
             }
         }
