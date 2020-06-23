@@ -46,7 +46,7 @@ public class SeatMapTests {
         final RowSeating result = seatMap.getRowSeating(row_3A4A3, 4);
         Assertions.assertEquals(4, result.getStart());
         Assertions.assertEquals(7, result.getEnd());
-        Assertions.assertEquals(0, result.getAisles());
+        Assertions.assertEquals(0, result.getAisles().size());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class SeatMapTests {
         final RowSeating result = seatMap.getRowSeating(row_3T4T3, 4);
         Assertions.assertEquals(4, result.getStart());
         Assertions.assertEquals(7, result.getEnd());
-        Assertions.assertEquals(0, result.getAisles());
+        Assertions.assertEquals(0, result.getAisles().size());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class SeatMapTests {
         final RowSeating result = seatMap.getRowSeating(row_3TA2T, 4);
         Assertions.assertEquals(6, result.getStart());
         Assertions.assertEquals(10, result.getEnd());
-        Assertions.assertEquals(1, result.getAisles());
+        Assertions.assertEquals(1, result.getAisles().size());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class SeatMapTests {
         final RowSeating result = seatMap.getRowSeating(row_3A4A3, 6);
         Assertions.assertEquals(0, result.getStart());
         Assertions.assertEquals(6, result.getEnd());
-        Assertions.assertEquals(1, result.getAisles());
+        Assertions.assertEquals(1, result.getAisles().size());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class SeatMapTests {
         final RowSeating result = seatMap.getRowSeating(row_3TA2T, 5);
         Assertions.assertEquals(6, result.getStart());
         Assertions.assertEquals(11, result.getEnd());
-        Assertions.assertEquals(1, result.getAisles());
+        Assertions.assertEquals(1, result.getAisles().size());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class SeatMapTests {
         final RowSeating result = seatMap.getRowSeating(row_2TA, 6);
         Assertions.assertEquals(2, result.getStart());
         Assertions.assertEquals(9, result.getEnd());
-        Assertions.assertEquals(2, result.getAisles());
+        Assertions.assertEquals(2, result.getAisles().size());
     }
 
     @Test
@@ -96,7 +96,7 @@ public class SeatMapTests {
         Assertions.assertEquals(0, mapSeating.getRow());
         Assertions.assertEquals(2, mapSeating.getRowSeating().getStart());
         Assertions.assertEquals(7, mapSeating.getRowSeating().getEnd());
-        Assertions.assertEquals(1, mapSeating.getRowSeating().getAisles());
+        Assertions.assertEquals(1, mapSeating.getRowSeating().getAisles().size());
     }
 
     @Test
@@ -106,7 +106,7 @@ public class SeatMapTests {
         Assertions.assertEquals(0, mapSeating.getRow());
         Assertions.assertEquals(0, mapSeating.getRowSeating().getStart());
         Assertions.assertEquals(7, mapSeating.getRowSeating().getEnd());
-        Assertions.assertEquals(1, mapSeating.getRowSeating().getAisles());
+        Assertions.assertEquals(1, mapSeating.getRowSeating().getAisles().size());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class SeatMapTests {
         Assertions.assertEquals(0, mapSeating.getRow());
         Assertions.assertEquals(0, mapSeating.getRowSeating().getStart());
         Assertions.assertEquals(11, mapSeating.getRowSeating().getEnd());
-        Assertions.assertEquals(2, mapSeating.getRowSeating().getAisles());
+        Assertions.assertEquals(2, mapSeating.getRowSeating().getAisles().size());
     }
 
     @Test
@@ -126,7 +126,7 @@ public class SeatMapTests {
         Assertions.assertEquals(3, mapSeating.getRow());
         Assertions.assertEquals(0, mapSeating.getRowSeating().getStart());
         Assertions.assertEquals(11, mapSeating.getRowSeating().getEnd());
-        Assertions.assertEquals(2, mapSeating.getRowSeating().getAisles());
+        Assertions.assertEquals(2, mapSeating.getRowSeating().getAisles().size());
     }
 
     @Test

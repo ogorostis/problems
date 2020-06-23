@@ -14,7 +14,7 @@ public class SeatMap {
     public static class RowSeating {
         private final int start;
         private final int end;
-        private final int aisles;
+        private final List<Integer> aisles;
     }
 
     @Data
@@ -33,8 +33,7 @@ public class SeatMap {
     RowSeating getRowSeating(final int[] seats, final int partySize) throws Exception {
         int position = 0;
         int partyCount = 0;
-        int aisles = 0;
-        int lastAisle = -1;
+        List<Integer> aisles = new LinkedList<>();
         final List<RowSeating> candidates = new LinkedList<>();
 
         while (position < seats.length) {
@@ -42,30 +41,30 @@ public class SeatMap {
                 if (seats[position] == AVAIL) {
                     partyCount++;
                 } else if (seats[position] == AISLE) {
-                    aisles++;
-                    lastAisle = position;
+                    aisles.add(position);
                 } else if (seats[position] == TAKEN) {
                     partyCount = 0;
-                    lastAisle = -1;
-                    aisles = 0;
+                    aisles = new LinkedList<>();
                 }
                 position++;
             }
 
             if (partyCount == partySize) {
-                final RowSeating result = new RowSeating(position - partyCount - aisles, position - 1, aisles);
-                if (aisles == 0) {
+                final RowSeating result = new RowSeating(
+                        position - partyCount - aisles.size(),
+                        position - 1,
+                        new LinkedList<>(aisles));
+                if (aisles.size() == 0) {
                     // Found contiguous seats with no aisle separation
                     return result;
                 } else {
                     candidates.add(result);
                     // Found seats with aisle separation but
                     // there may be better (no aisle) further down the row
-                    // so we continue (after backtracking to right after last aisle)
-                    position = 1 + lastAisle;
+                    // so we continue (after backtracking to right after LAST aisle)
+                    position = 1 + aisles.get(aisles.size() - 1);
                     partyCount = 0;
-                    aisles = 0;
-                    lastAisle = -1;
+                    aisles = new LinkedList<>();
                 }
             }
         }
@@ -85,7 +84,7 @@ public class SeatMap {
             final int[] row = rows[r];
             try {
                 final MapSeating mapSeating = new MapSeating(r, getRowSeating(row, partySize));
-                if (mapSeating.getRowSeating().getAisles() == 0) {
+                if (mapSeating.getRowSeating().getAisles().size() == 0) {
                     // As soon as we have seats not
                     // separated by aisles, return them
                     return mapSeating;
