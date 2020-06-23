@@ -54,7 +54,7 @@ public class SeatMap {
                         position - partyCount - aisles.size(),
                         position - 1,
                         new LinkedList<>(aisles));
-                if (aisles.size() == 0) {
+                if (result.aisles.size() == 0) {
                     // Found contiguous seats with no aisle separation
                     return result;
                 } else {
